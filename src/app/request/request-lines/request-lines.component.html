@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<div id="component">
+    <h3 class="display-4 font-weight-bold">{{pageTitle}}</h3>
+        <a routerLink="/requests/list" class="btn btn-primary">Back to Requests</a><span *ngIf="isAdmin || activeUser.id == request.userId"> | </span>
+    <a *ngIf="isAdmin || activeUser.id == request.userId" routerLink="/requestlines/create/{{reqId}}" class="btn btn-primary">Add New Product to Request</a>
+    <table *ngIf="request" class="table table-dark table-striped table-bordered">
+        <thead>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Justification</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>User</th>
+        </thead>
+        <tbody class="table table-dark table-striped">
+            <tr>
+                <td>{{request.id}}</td>
+                <td>{{request.description}}</td>
+                <td>{{request.justification}}</td>
+                <td>{{request.status}}</td>
+                <td>{{request.total | currency }}</td>
+                <td>{{request.user.userName}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="request && request.requestLines" class="table table-dark table-striped table-bordered">
+        <thead>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rl of request.requestLines">
+                <td>{{rl.id}}</td>
+                <td>{{rl.product.name}}</td>
+                <td>{{rl.quantity}}</td>
+                <td>{{rl.product.price | currency}}</td>
+                <td>{{rl.product.price * rl.quantity | currency}}</td>
+                <td>
+                    <a *ngIf="isAdmin || activeUser.id == request.userId" routerLink="/requestlines/edit/{{rl.id}}" class="btn btn-primary">Edit</a><span *ngIf="isAdmin || activeUser.id == request.userId"> | </span>
+                    <button *ngIf="isAdmin || activeUser.id == request.userId" (click)="verify()" class="btn btn-danger">Delete</button>
+                    <span *ngIf="showDelete"> | </span><button *ngIf="showDelete" (click)="delete(rl.id)"
+                        class="btn btn-success">Verify</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button *ngIf="isAdmin || activeUser.id == request.userId" (click)="review()" class="btn btn-success">Submit for Review</button>
+</div>

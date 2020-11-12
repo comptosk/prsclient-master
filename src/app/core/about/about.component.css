@@ -1,0 +1,13 @@
+table {
+    max-width: 50%;
+    
+}
+
+.clickable {
+    color: #007bff;
+    cursor: pointer;
+}
+
+a.clickable:hover{
+    color: purple
+}

@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+<div id="component">
+    <h3 class="display-4 font-weight-bold">{{pageTitle}}</h3>
+    <a routerLink="/requests/reviews" class="btn btn-primary">Back to Requests in Review</a>
+    <table *ngIf="request && isReviewer" class="table table-dark table-striped table-bordered">
+        <thead>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Justification</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>User</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{request.id}}</td>
+                <td>{{request.description}}</td>
+                <td>{{request.justification}}</td>
+                <td>{{request.status}}</td>
+                <td>{{request.total }}</td>
+                <td>{{request.user.userName}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table *ngIf="request && request.requestLines" class="table table-dark table-striped table-bordered">
+        <thead>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rl of request.requestLines">
+                <td>{{rl.id}}</td>
+                <td>{{rl.product.name}}</td>
+                <td>{{rl.quantity}}</td>
+                <td>{{rl.product.price | currency}}</td>
+                <td>{{rl.product.price * rl.quantity | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="approve()" class="btn btn-success  ">Approve Request</button><span> | </span>
+    <button (click)="rejectReason()" class="btn btn-danger ">Reject Request</button>
+    <span *ngIf="rejectShow"> | </span><input *ngIf="rejectShow" [(ngModel)]="rejectionReason"
+        placeholder="Rejection Reason"> <span *ngIf="rejectShow"> | </span>
+    <button (click)="reject()" *ngIf="rejectShow" class="btn btn-warning">Verify Rejection</button>
+</div>

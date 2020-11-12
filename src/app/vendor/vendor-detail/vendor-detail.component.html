@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold" >{{pageTitle}}</span><br>
+    <a routerLink= "/vendors/list" class="btn btn-primary">Back to Vendors</a>
+    <div >
+    <table *ngIf="vendor" class="table table-dark table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td><input [(ngModel)]= "vendor.id" type="number" size= "5"  readonly></td>            
+        </tr>
+        <tr>
+            <th>Code</th>
+            <td><input [(ngModel)]= "vendor.code" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <th>Vendor Name</th>
+            <td><input [(ngModel)]= "vendor.name" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <th>Addres</th>
+            <td><input [(ngModel)]= "vendor.address" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><input [(ngModel)]= "vendor.city" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <th>State</th>
+            <td><input [(ngModel)]= "vendor.state" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <th>Zip</th>
+            <td><input [(ngModel)]= "vendor.zip" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input [(ngModel)]= "vendor.phone" type="text" size= "25"  readonly></td>            
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button *ngIf="isAdmin"  (click)="verify()" class="btn btn-danger">Delete</button><span *ngIf="showDelete"> | </span>
+                <button *ngIf="showDelete" (click)="delete()" class="btn btn-warning">Verify</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

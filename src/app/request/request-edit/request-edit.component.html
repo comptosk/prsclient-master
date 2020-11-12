@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span><br>
+    <a routerLink="/requests/list" class="btn btn-primary">Back to Requests</a>
+    <div>
+        <table class="table table-dark table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td><input [(ngModel)]="requestid" type="number" size="5" readonly placeholder="{{request.id}}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><input [(ngModel)]="request.description" type="text" size="25"></td>
+                </tr>
+                <tr>
+                    <th>Justification</th>
+                    <td><input [(ngModel)]="request.justification" type="text" size="25"></td>
+                </tr>
+                <tr>
+                    <th>Delivery Mode</th>
+                    <td><input [(ngModel)]="request.deliveryMode" type="text" value="request.deliveryMode" size="25">
+                    </td>
+                </tr>
+                <tr>
+                    <th>User</th>
+                    <td><input [(ngModel)]="request.userName" type="text" size="25" readonly
+                            placeholder="{{request.user.userName}}"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="save()" type="button" class="btn btn-success">Save</button><span> | </span>
+                        <button (click)="cancel()" type="button" class="btn btn-danger">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

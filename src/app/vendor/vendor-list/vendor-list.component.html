@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div id="component">
+    <h3 class="display-4 font-weight-bold">{{pageTitle}}</h3>
+    <a *ngIf="isAdmin" routerLink="/vendors/create" class="btn btn-primary">Create New Vendor</a><span *ngIf="isAdmin"> | </span>
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search Vendors">
+    <table *ngIf="vendors" class="table table-dark table-striped table-bordered">
+        <thead>
+            <th><a (click)="sort('id')" class="clickable">ID</a></th>
+            <th><a (click)="sort('code')" class="clickable">Code</a></th>
+            <th><a (click)="sort('name')" class="clickable">Vendor Name</a></th>
+            <th><a (click)="sort('address')" class="clickable">Address</a></th>
+            <th><a (click)="sort('city')" class="clickable">City</a></th>
+            <th><a (click)="sort('state')" class="clickable">State</a></th>
+            <th><a (click)="sort('zip')" class="clickable">Zip?</a></th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of vendors | vendorSearch:searchCriteria | sort:sortCriteria:sortAsc">
+                <td>{{v.id}}</td>
+                <td>{{v.code}}</td>
+                <td>{{v.name}}</td>
+                <td>{{v.address}}</td>
+                <td>{{v.city}}</td>
+                <td>{{v.state}}</td>
+                <td>{{v.zip}}</td>
+                <td>
+                    <a routerLink="/vendors/detail/{{v.id}}" class="btn btn-primary">Detail</a><span *ngIf="isAdmin"> | </span>
+                    <a *ngIf="isAdmin" routerLink="/vendors/edit/{{v.id}}" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,13 @@
+.clickable {
+    color: #007bff;
+    cursor: pointer;
+}
+
+a.clickable:hover{
+    color: purple
+}
+table{
+
+    margin: 5px;
+
+}

@@ -1,0 +1,65 @@
+<div id="component">
+    <div>
+      <span routerLink="/about" class="badge badge-pill badge-info clickable">About</span>
+        <table class="table table-dark table-striped table-bordered mx-auto">
+            <thead>
+                <th class="text-center">PRS User Login</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input class="text-center form-control" [(ngModel)]="userName" type="text" size="25"
+                            placeholder="User Name"></td>
+                </tr>
+                <tr>
+                    <td><input class="text-center form-control" [(ngModel)]="password" type="password" size="25"
+                            placeholder="Password"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button (click)="logIn()" class="btn btn-primary form-control">Log In</button>
+                    </td>
+                </tr>
+                <tr *ngIf="error">
+                    <td class="text-center font-weight-bold text-danger ">
+                        <span>Login Failed</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <!-- <div class="card-deck">
+    <div class="card text-white bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Try It as User!</div>
+        <div class="card-body">
+          <h5 class="card-title">Default User LogIn:</h5>
+          <p class="card-text">UserName: user </p>
+          <p class="card-text">Password: user </p>
+        </div>
+      </div>
+      <div class="card text-white bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Try It as Reviewer!</div>
+        <div class="card-body">
+          <h5 class="card-title">Default Reviewer LogIn:</h5>
+          <p class="card-text">UserName: review </p>
+          <p class="card-text">Password: review </p>
+        </div>
+      </div>
+      <div class="card text-white bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Try It as Admin!</div>
+        <div class="card-body">
+          <h5 class="card-title">Default Admin LogIn:</h5>
+          <p class="card-text">UserName: admin </p>
+          <p class="card-text">Password: admin </p>
+        </div>
+      </div>
+      <div class="card text-white bg-info mb-3 mx-auto" style="max-width: 18rem;">
+        <div class="card-header">Try It as Super!</div>
+        <div class="card-body">
+          <h5 class="card-title">Default Super LogIn:</h5>
+          <p class="card-text">UserName: super </p>
+          <p class="card-text">Password: super </p>
+        </div>
+      </div> -->
+    <!-- </div> -->
+</div>

@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span><br>
+    <a routerLink="/users/list" class="btn btn-primary  ">Back to Users</a>
+    <div>
+        <table *ngIf="user" class="table table-dark table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td><input [(ngModel)]="user.id" type="number" size="5" readonly></td>
+                </tr>
+                <tr>
+                    <th>UserName</th>
+                    <td><input [(ngModel)]="user.userName" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td><input [(ngModel)]="user.firstName" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input [(ngModel)]="user.lastName" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td><input [(ngModel)]="user.phone" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input [(ngModel)]="user.email" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Reviewer?</th>
+                    <td><input [(ngModel)]="user.isReviewer" type="checkbox" size="5" readonly></td>
+                </tr>
+                <tr>
+                    <th>Administrator?</th>
+                    <td><input [(ngModel)]="user.isAdmin" type="checkbox" size="5" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button *ngIf="isAdmin" (click)="verify()" class="btn btn-danger  ">Delete</button>
+                        <span *ngIf="showDelete"> | </span><button *ngIf="showDelete" (click)="delete()"
+                            class="btn btn-warning">Verify</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

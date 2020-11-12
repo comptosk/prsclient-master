@@ -1,0 +1,53 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span><br>
+    <a routerLink="/users/list" class="btn btn-primary">Back to Users</a>
+    <div>
+        <table *ngIf="isAdmin" class="table table-dark table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td><input [(ngModel)]="user.id" type="number" size="5" readonly></td>
+                </tr>
+                <tr>
+                    <th>UserName</th>
+                    <td><input [(ngModel)]="user.UserName" type="text" size="25" placeholder="UserName"></td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td><input [(ngModel)]="user.password" type="text" size="25" placeholder="Password"></td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td><input [(ngModel)]="user.firstName" type="text" size="25" placeholder="First Name"></td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input [(ngModel)]="user.lastName" type="text" size="25" placeholder="Last Name"></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td><input [(ngModel)]="user.phone" type="text" size="25" placeholder="Phone Number"></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><input [(ngModel)]="user.email" type="text" size="25" placeholder="Email Address"></td>
+                </tr>
+                <tr>
+                    <th>Reviewer?</th>
+                    <td><input [(ngModel)]="user.isReviewer" type="checkbox" size="5"></td>
+                </tr>
+                <tr>
+                    <th>Administrator?</th>
+                    <td><input [(ngModel)]="user.isAdmin" type="checkbox" size="5"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="save()" type="button" class="btn btn-success">Save</button><span> | </span>
+                        <button (click)="cancel()" type="button" class="btn btn-danger">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

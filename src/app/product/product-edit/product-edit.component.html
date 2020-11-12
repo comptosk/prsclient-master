@@ -1,0 +1,45 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span><br>
+    <a routerLink="/products/list" class="btn btn-primary  ">Back to Products</a>
+    <div>
+        <table *ngIf="isAdmin" class="table table-dark table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td><input [(ngModel)]="product.id" type="number" size="5" readonly></td>
+                </tr>
+                <tr>
+                    <th>Part Number</th>
+                    <td><input [(ngModel)]="product.partNbr" type="text" size="25"></td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td><input [(ngModel)]="product.name" type="text" size="25"></td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>$<input [(ngModel)]="product.price" type="number" size="10"></td>
+                </tr>
+                <tr>
+                    <th>Unit</th>
+                    <td><input [(ngModel)]="product.unit" type="text" size="25"></td>
+                </tr>
+                <!-- photo path -->
+                <tr>
+                    <th>Vendor</th>
+                    <td><select [(ngModel)]="product.vendorId">
+                            <option *ngFor="let v of vendors" value={{v.id}}>{{v.name}}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="save()" type="button" class="btn btn-success">Save</button><span> | </span>
+                        <button (click)="cancel()" type="button" class="btn btn-danger">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

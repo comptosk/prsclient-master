@@ -1,0 +1,30 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span>
+    <div>
+        <table class="table table-dark table-striped table-bordered">
+            <tr>
+                <th>Id</th>
+                <td><input [(ngModel)]="requestLine.id" type="number" size="5" disabled></td>
+            </tr>
+            <tr>
+                <th>Product</th>
+                <td>
+                    <select [(ngModel)]="requestLine.productId">
+                        <option *ngFor="let p of products" value={{p.id}}>{{p.name}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td><input [(ngModel)]="requestLine.quantity" type="number" size="5"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button (click)="save()" type="button" class="btn btn-success btn-sm">Save</button><span> | </span>
+                    <button (click)="cancel()" type="button" class="btn btn-danger btn-sm">Cancel</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

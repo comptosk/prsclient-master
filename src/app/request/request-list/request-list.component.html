@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div id="component">
+    <h3 class="display-4 font-weight-bold">{{pageTitle}}</h3>
+    <a routerLink="/requests/create" class="btn btn-primary">Create New Request</a><span> | </span>
+    <a *ngIf="isReviewer" routerLink="/requests/reviews" class="btn btn-primary">See Requests in Review</a><span *ngIf="isReviewer"> | </span>
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search Requests">
+    <table *ngIf="requests" class="table table-dark table-striped table-bordered">
+        <thead>
+            <th><a (click)="sort('id')" class="clickable">ID</a></th>
+            <th><a (click)="sort('description')" class="clickable">Description</a></th>
+            <th><a (click)="sort('justification')" class="clickable">Justification</a></th>
+            <th><a (click)="sort('status')" class="clickable">Status</a></th>
+            <th><a (click)="sort('rejectionReason')" class="clickable">Rejection Reason</a></th>
+            <th><a (click)="sort('deliveryMode')" class="clickable">Delivery Mode</a></th>
+            <th><a (click)="sort('total')" class="clickable">Total</a></th>
+            <th><a (click)="sort('userId')" class="clickable">User</a></th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of requests | requestSearch:searchCriteria | sort:sortCriteria:sortAsc">
+                <td>{{r.id}}</td>
+                <td>{{r.description}}</td>
+                <td>{{r.justification}}</td>
+                <td>{{r.status}}</td>
+                <td>{{r.rejectionReason}}</td>
+                <td>{{r.deliveryMode}}</td>
+                <td>{{r.total | currency}}</td>
+                <td>{{r.nameName}}</td>
+                <td>
+                    <a routerLink="/requests/detail/{{r.id}}" class="btn btn-primary">Detail</a><span> | </span>
+                    <a routerLink="/requests/lines/{{r.id}}" class="btn btn-primary">Lines</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

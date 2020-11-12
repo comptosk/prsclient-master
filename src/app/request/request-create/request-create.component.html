@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span><br>
+    <a routerLink="/requests/list" class="btn btn-primary">Back to Requests</a>
+    <div>
+        <table class="table table-dark table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td><input [(ngModel)]="request.id" type="number" size="5" disabled></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <input [(ngModel)]="request.description" type="text" size="25" placeholder="Description">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Justification</th>
+                    <td>
+                        <input [(ngModel)]="request.justification" type="text" size="25" placeholder="Justification">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Delivery Mode</th>
+                    <td>
+                        <input [(ngModel)]="request.deliveryMode" type="text" size="25" placeholder="Delivery or Pick Up">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button (click)="save()" type="button" class="btn btn-success btn-sm">Save</button><span> |
+                        </span>
+                        <button (click)="cancel()" type="button" class="btn btn-danger btn-sm">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

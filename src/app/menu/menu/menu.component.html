@@ -1,0 +1,7 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li *ngFor="let m of menus" class="breadcrumb-item">
+        <a routerLink="{{m.route}}">{{m.display}}</a>
+      </li>
+    </ol>
+  </nav>

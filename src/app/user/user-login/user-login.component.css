@@ -1,0 +1,12 @@
+thead{
+    font-size: 20pt;
+}
+table{
+    max-width: 30%;
+    margin-top: 30px;
+}
+
+.clickable:hover{
+    color: purple;
+    cursor: pointer;
+}

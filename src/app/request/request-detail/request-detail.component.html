@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="display-4 font-weight-bold">{{pageTitle}}</span><br>
+    <a routerLink="/requests/list" class="btn btn-primary">Back to Requests</a>
+    <div>
+        <table *ngIf="request" class="table table-dark table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td><input [(ngModel)]="request.id" type="number" size="5" readonly></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><input [(ngModel)]="request.description" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Justification</th>
+                    <td><input [(ngModel)]="request.justification" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Rejection Reason</th>
+                    <td><input [(ngModel)]="request.rejectionReason" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Delivery Mode</th>
+                    <td><input [(ngModel)]="request.deliveryMode" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td><input [(ngModel)]="request.status" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>User</th>
+                    <td><input [(ngModel)]="request.user.userName" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <td>$<input [(ngModel)]="request.total" type="text" size="25" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button *ngIf="isAdmin || activeUser.id == request.userId" routerLink="/requests/edit/{{request.id}}" class="btn btn-primary">Edit Request</button><span *ngIf="isAdmin || activeUser.id == request.userId"> | </span>
+                        <button *ngIf="isAdmin || activeUser.id == request.userId" (click)="verify()" class="btn btn-danger">Delete Request</button><span *ngIf="showDelete"> | </span>
+                        <button *ngIf="showDelete" (click)="delete()" class="btn btn-warning">Verify</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

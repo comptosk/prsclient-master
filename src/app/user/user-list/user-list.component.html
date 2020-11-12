@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div id="component">
+    <h3 class="display-4 font-weight-bold" >{{pageTitle}}</h3>
+    <a *ngIf="isAdmin" routerLink="/users/create" class="btn btn-primary">Create New User</a><span *ngIf="isAdmin"> | </span>
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search Users">
+    <table class="table table-dark table-striped table-bordered">
+        <thead>
+            <th><a (click)="sort('id')" class="clickable" >ID</a></th>
+            <th><a (click)="sort('userName')" class="clickable" >UserName</a></th>
+            <th><a (click)="sort('firstName')" class="clickable" >First Name</a></th>
+            <th><a (click)="sort('lastName')" class="clickable" >Last Name</a></th>
+            <th><a (click)="sort('phone')" class="clickable" >Phone</a></th>
+            <th><a (click)="sort('email')" class="clickable" >Email</a></th>
+            <th><a (click)="sort('isReviewer')" class="clickable" >Reviewer?</a></th>
+            <th><a (click)="sort('isAdmin')" class="clickable" >Administrator?</a></th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor= "let u of users | userSearch:searchCriteria | sort:sortCriteria:sortAsc">
+                
+                <td>{{u.id}}</td>
+                <td>{{u.userName}}</td>
+                <td>{{u.firstName}}</td>
+                <td>{{u.lastName}}</td>
+                <td>{{u.phone}}</td> 
+                <td>{{u.email}}</td>
+                <td>{{u.isReviewer ? "YES" : "NO"}}</td>
+                <td>{{u.isAdmin ? "YES" : "NO"}}</td>
+                <td>
+                    <a routerLink="/users/detail/{{u.id}}" class="btn btn-primary">Detail</a><span *ngIf="isAdmin"> | </span>
+                    <a *ngIf="isAdmin" routerLink="/users/edit/{{u.id}}" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
